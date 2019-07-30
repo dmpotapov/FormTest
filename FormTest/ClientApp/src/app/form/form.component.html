@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-md-12">
+        <h3>Register</h3>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12">
+        <form [formGroup]="userForm" (submit)="register()">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input class="form-control" id="firstName" formControlName="firstName" placeholder="First Name" />
+                <app-error-text [form]="userForm" field="firstName" errorKey="required" text="Field is required"></app-error-text>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input class="form-control" id="lastName" formControlName="lastName" placeholder="Last Name" />
+                <app-error-text [form]="userForm" field="lastName" errorKey="required" text="Field is required"></app-error-text>
+            </div>
+            <div class="form-group">
+                <label for="email">E-Mail</label>
+                <input type="email" class="form-control" id="email" formControlName="email" placeholder="E-Mail" />
+                <app-error-text [form]="userForm" field="email" errorKey="required" text="Field is required"></app-error-text>
+                <app-error-text [form]="userForm" field="email" errorKey="email" text="Wrong E-Mail format"></app-error-text>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password" />
+                <app-error-text [form]="userForm" field="password" errorKey="required" text="Field is required"></app-error-text>
+                <app-error-text [form]="userForm" field="password" errorKey="containsPattern"
+                                text="Password should at least have latin letters (both upper- and lowercase) and digits"></app-error-text>
+            </div>
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select class="form-control" id="country" formControlName="countryId">
+                    <option *ngFor="let country of countriesDict" [value]="country.id">{{country.name}}</option>
+                </select>
+                <app-error-text [form]="userForm" field="countryId" errorKey="required" text="Field is required"></app-error-text>
+            </div>
+            <div class="form-group">
+                <label>Gender</label>
+                <div class="input-group">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="male" formControlName="gender" value="male" />
+                        <label class="form-check-label" for="male">
+                            Male
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="female" formControlName="gender" value="female" />
+                        <label class="form-check-label" for="female">
+                            Female
+                        </label>
+                    </div>
+                </div>
+                <app-error-text [form]="userForm" field="gender" errorKey="required" text="Field is required"></app-error-text>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" id="receiveNotifications" type="checkbox" formControlName="receiveNotifications">
+                    <label class="form-check-label" for="receiveNotifications">
+                        Receive notifications
+                    </label>
+                </div>
+                <app-error-text [form]="userForm" field="receiveNotifications" errorKey="required" text="Field is required"></app-error-text>
+            </div>
+            <button type="submit" class="btn btn-success" [disabled]="!userForm.valid" [swal]="['Success', 'Successfully registered!', 'success']">Register</button>
+        </form>
+    </div>
+</div>
