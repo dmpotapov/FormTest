@@ -61,7 +61,13 @@
                 </div>
                 <app-error-text [form]="userForm" field="receiveNotifications" errorKey="required" text="Field is required"></app-error-text>
             </div>
-            <button type="submit" class="btn btn-success" [disabled]="!userForm.valid" [swal]="['Success', 'Successfully registered!', 'success']">Register</button>
+            <button type="submit" class="btn btn-success" [disabled]="!userForm.valid">Register</button>
         </form>
     </div>
 </div>
+
+<swal #successfulRegister
+      title="Success"
+      text="Successfully registered"
+      type="success">
+</swal>

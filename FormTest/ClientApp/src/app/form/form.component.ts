@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { User } from '../model/user';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { CustomValidators } from '../helpers/custom-validators';
 import { DictionaryDataService } from '../services/dictionary-data.service';
 import { Country } from '../model/country';
+import { ApiService } from '../services/api.service';
+import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 
 @Component({
     selector: 'app-form',
@@ -13,6 +15,7 @@ import { Country } from '../model/country';
 
 /** form component*/
 export class FormComponent {
+    @ViewChild("successfulRegister") successfulRegister: SwalComponent;
 
     user: User = new User();
     userForm: FormGroup = this.fb.group({
@@ -36,11 +39,12 @@ export class FormComponent {
 
     /** form ctor */
     constructor(private fb: FormBuilder,
-                private dictionaryData: DictionaryDataService) {
+                private dictionaryData: DictionaryDataService,
+                private apiService: ApiService) {
         
     }
 
     register() {
-
+        this.apiService.submitForm(<User>this.userForm.value).subscribe(u => this.successfulRegister.show());
     }
 }

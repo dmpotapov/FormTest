@@ -12,6 +12,7 @@ import { ListComponent } from './list/list.component';
 import { ErrorTextComponent } from './form/error-text/error-text.component';
 import { DictionaryDataService } from './services/dictionary-data.service';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { ApiService } from './services/api.service';
 
 @NgModule({
     declarations: [
@@ -34,7 +35,10 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
             { path: 'list', component: ListComponent }
         ])
     ],
-    providers: [DictionaryDataService],
+    providers: [
+        DictionaryDataService,
+        ApiService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
