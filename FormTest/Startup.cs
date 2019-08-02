@@ -1,9 +1,12 @@
+using FormTest.BL.Services;
+using FormTest.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MongoDB.Driver;
 
 namespace FormTest
 {
@@ -20,6 +23,10 @@ namespace FormTest
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddScoped<IMongoClient>(s => new MongoClient(Configuration.GetConnectionString("mongo")));
+            services.AddScoped(s => new MongoDbFormDataRepository(s.GetService<IMongoClient>(), "forms", "forms"));
+            services.AddScoped<IFormService, FormService>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
