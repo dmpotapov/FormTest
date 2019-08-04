@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using FormTest.BL.Models;
 using FormTest.DAL;
 using MongoDB.Driver;
 using Newtonsoft.Json.Linq;
@@ -21,7 +22,7 @@ namespace FormTest.BL.Services
             _repository = repository;
         }
 
-        public IEnumerable<IDictionary<string, object>> Search(int offset, int count, IDictionary<string, object> fieldFilters)
+        public FormDataSearchResult Search(int offset, int count, IDictionary<string, object> fieldFilters)
         {
             /* 
             * definitely not a good solution to load all entities into the memory
@@ -29,9 +30,17 @@ namespace FormTest.BL.Services
             * better solution will be to just write a method in Repository implementation to fetch data using MongoDb FilterDefinitions
             * but imo it will a bit look like a crutch
             */
-            var res = _repository.Get(); 
+            var all = _repository.Get();
+            var total = all.Count();
+            var res = new FormDataSearchResult()
+            {
+                Total = total,
+                Items = all.Where(r => fieldFilters.All(f => string.IsNullOrEmpty(f.Value.ToString()) 
+                                                          || r[f.Key].ToString() == f.Value.ToString()))
+                                                    .Skip(offset).Take(count)
+            };
 
-            return res.Where(r => fieldFilters.All(f => r[f.Key].ToString() == f.Value.ToString())).Skip(offset).Take(count);
+            return res;
         }
 
         public void Submit(IDictionary<string, object> formData)

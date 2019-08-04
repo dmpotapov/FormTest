@@ -1,1 +1,35 @@
-﻿<div style="border: 1px solid red">list Component</div>
+<div class="row">
+    <div class="col-md-12">
+        <h2>Form data list</h2>
+        <form (submit)="refreshList()">
+            <div class="form-row">
+                <div class="col">
+                    <input class="form-control form-control-inline" name="params.fieldFilters.firstName" [(ngModel)]="params.fieldFilters.firstName" placeholder="First Name" />
+                </div>
+                <div class="col">
+                    <input class="form-control" name="lastName" [(ngModel)]="params.fieldFilters.lastName" placeholder="Last Name" />
+                </div>
+                <div class="col">
+                    <input type="email" class="form-control" name="email" [(ngModel)]="params.fieldFilters.email" placeholder="E-Mail" />
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-success">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-sm-12">
+        <ul class="list-group" *ngIf="data">
+            <li class="list-group-item" *ngFor="let l of data.items" style="margin:20px 0">
+                <app-list-item [item]="l" [countriesDict]="countriesDict"></app-list-item>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+
+    </div>
+</div>

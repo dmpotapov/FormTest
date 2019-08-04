@@ -1,0 +1,43 @@
+<div class="form-group">
+    <label for="firstName">First Name</label>
+    <input class="form-control" id="firstName" disabled [(ngModel)]="item.firstName" placeholder="First Name" />
+</div>
+<div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input class="form-control" id="lastName" disabled [(ngModel)]="item.lastName" placeholder="Last Name" />
+</div>
+<div class="form-group">
+    <label for="email">E-Mail</label>
+    <input type="email" class="form-control" id="email" disabled [(ngModel)]="item.email" placeholder="E-Mail" />
+</div>
+<div class="form-group">
+    <label for="country">Country</label>
+    <select class="form-control" id="country" disabled [(ngModel)]="item.countryId">
+        <option *ngFor="let country of countriesDict" [value]="country.id">{{country.name}}</option>
+    </select>
+</div>
+<div class="form-group">
+    <label>Gender</label>
+    <div class="input-group">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="male" disabled [(ngModel)]="item.gender" value="male" />
+            <label class="form-check-label" for="male">
+                Male
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="female" disabled [(ngModel)]="item.gender" value="female" />
+            <label class="form-check-label" for="female">
+                Female
+            </label>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="form-check">
+        <input class="form-check-input" id="receiveNotifications" type="checkbox" disabled [(ngModel)]="item.receiveNotifications">
+        <label class="form-check-label" for="receiveNotifications">
+            Receive notifications
+        </label>
+    </div>
+</div>

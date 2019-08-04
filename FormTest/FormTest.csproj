@@ -28,6 +28,8 @@
   <ItemGroup>
     <None Remove="ClientApp\src\app\helpers\custom-validators.ts" />
     <None Remove="ClientApp\src\app\model\country.ts" />
+    <None Remove="ClientApp\src\app\model\form-data-search-parameters.ts" />
+    <None Remove="ClientApp\src\app\model\form-data-search-result.ts" />
     <None Remove="ClientApp\src\app\model\user.ts" />
     <None Remove="ClientApp\src\app\services\api.service.ts" />
     <None Remove="ClientApp\src\app\services\dictionary-data.service.ts" />
@@ -40,6 +42,8 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\helpers\custom-validators.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\model\country.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\form-data-search-parameters.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\form-data-search-result.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\model\user.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\api.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\dictionary-data.service.ts" />

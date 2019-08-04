@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using FormTest.BL.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,6 +24,6 @@ namespace FormTest.BL.Services
         /// <param name="count">Count</param>
         /// <param name="fieldFilters">Fields whose search will be executed by</param>
         /// <returns></returns>
-        IEnumerable<IDictionary<string, object>> Search(int offset, int count, IDictionary<string, object> fieldFilters);
+        FormDataSearchResult Search(int offset, int count, IDictionary<string, object> fieldFilters);
     }
 }
