@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormGroup, AbstractControl } from '@angular/forms';
 
 @Component({
     selector: 'app-error-text',
@@ -17,7 +17,7 @@ export class ErrorTextComponent {
 
     }
 
-    touchedAndHasError(control: FormControl, errorKey: string) {
+    touchedAndHasError(control: AbstractControl, errorKey: string) {
         return control.touched && control.errors && control.errors[errorKey];
     }
 }

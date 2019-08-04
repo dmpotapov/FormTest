@@ -6,6 +6,7 @@ import { DictionaryDataService } from '../services/dictionary-data.service';
 import { Country } from '../model/country';
 import { ApiService } from '../services/api.service';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-form',
@@ -40,11 +41,15 @@ export class FormComponent {
     /** form ctor */
     constructor(private fb: FormBuilder,
                 private dictionaryData: DictionaryDataService,
-                private apiService: ApiService) {
+                private apiService: ApiService,
+                private router: Router) {
         
     }
 
     register() {
-        this.apiService.submitForm(<User>this.userForm.value).subscribe(u => this.successfulRegister.show());
+        this.apiService.submitForm(<User>this.userForm.value).subscribe(u => {
+            this.successfulRegister.show();
+            this.router.navigateByUrl("/");
+        });
     }
 }

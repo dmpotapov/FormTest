@@ -22,6 +22,11 @@ export class ListComponent {
         this.refreshList();
     }
 
+    search() {
+        this.params.offset = 0;
+        this.refreshList();
+    }
+
     refreshList() {
         this.apiService.searchFormData(this.params).subscribe(d => this.data = d);
     }

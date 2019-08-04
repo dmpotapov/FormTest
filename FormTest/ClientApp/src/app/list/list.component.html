@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
         <h2>Form data list</h2>
-        <form (submit)="refreshList()">
+        <form (submit)="search()">
             <div class="form-row">
                 <div class="col">
                     <input class="form-control form-control-inline" name="params.fieldFilters.firstName" [(ngModel)]="params.fieldFilters.firstName" placeholder="First Name" />
@@ -22,15 +22,15 @@
 <div class="row">
     <div class="col-md-6 col-sm-12">
         <ul class="list-group" *ngIf="data">
-            <li class="list-group-item" *ngFor="let l of data.items" style="margin:20px 0 0 0">
+            <li class="list-group-item" *ngFor="let l of data.items">
                 <app-list-item [item]="l" [countriesDict]="countriesDict"></app-list-item>
             </li>
         </ul>
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 app-pager">
         <app-pager [offset]="params.offset" [count]="params.count" [total]="data?.total"
-               (selectedPageChanged)="onSelectedPageChanged($event)"></app-pager>
+                   (selectedPageChanged)="onSelectedPageChanged($event)"></app-pager>
     </div>
 </div>
