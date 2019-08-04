@@ -1,1 +1,17 @@
-﻿<div style="border: 1px solid red">pager Component</div>
+<ul class="pagination">
+    <li class="page-item">
+        <a class="page-link" aria-label="Previous" (click)="onSelectedPageChange(selectedPage - 1)">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+        </a>
+    </li>
+    <li class="page-item" [class.active]="i == selectedPage" *ngFor="let i of pages" (click)="onSelectedPageChange(i)">
+        <a class="page-link">{{i}}</a>
+    </li>
+    <li class="page-item">
+        <a class="page-link" aria-label="Next" (click)="onSelectedPageChange(selectedPage + 1)">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+        </a>
+    </li>
+</ul>

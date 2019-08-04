@@ -14,6 +14,7 @@ import { DictionaryDataService } from './services/dictionary-data.service';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ApiService } from './services/api.service';
 import { ListItemComponent } from './list/list-item/list-item.component';
+import { PagerComponent } from './list/pager/pager.component';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import { ListItemComponent } from './list/list-item/list-item.component';
         FormComponent,
         ListComponent,
         ErrorTextComponent,
-        ListItemComponent
+        ListItemComponent,
+        PagerComponent
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

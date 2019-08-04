@@ -25,4 +25,9 @@ export class ListComponent {
     refreshList() {
         this.apiService.searchFormData(this.params).subscribe(d => this.data = d);
     }
+
+    onSelectedPageChanged(i: number) {
+        this.params.offset = (i - 1) * this.params.count;
+        this.refreshList();
+    }
 }

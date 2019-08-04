@@ -31,13 +31,12 @@ namespace FormTest.BL.Services
             * but imo it will a bit look like a crutch
             */
             var all = _repository.Get();
-            var total = all.Count();
+            var items = all.Where(r => fieldFilters.All(f => string.IsNullOrEmpty(f.Value.ToString())
+                                                          || r[f.Key].ToString() == f.Value.ToString()));
             var res = new FormDataSearchResult()
             {
-                Total = total,
-                Items = all.Where(r => fieldFilters.All(f => string.IsNullOrEmpty(f.Value.ToString()) 
-                                                          || r[f.Key].ToString() == f.Value.ToString()))
-                                                    .Skip(offset).Take(count)
+                Items = items.Skip(offset).Take(count),
+                Total = items.Count()
             };
 
             return res;
