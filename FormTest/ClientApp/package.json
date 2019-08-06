@@ -2,7 +2,7 @@
     "name": "form_test",
     "version": "0.0.0",
     "scripts": {
-        "dev": "webpack-dev-server --hot --open",
+        "dev": "webpack --watch",
         "build": "webpack"
     },
     "private": true,
