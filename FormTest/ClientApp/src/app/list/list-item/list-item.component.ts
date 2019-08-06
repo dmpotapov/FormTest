@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { User } from 'src/app/model/user';
-import { Country } from 'src/app/model/country';
+import { User } from '../../model/user';
+import { Country } from '../../model/country';
 
 @Component({
     selector: 'app-list-item',
